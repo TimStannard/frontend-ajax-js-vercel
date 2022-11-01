@@ -4,7 +4,7 @@
 <input id="password-input" name="password-input" type="password">
 <button id="login-button">Login</button> */}
 
-const server = "http://localhost:3100"
+const server = "https://mongo-coffee-app.vercel.app"
 const loginBtn = document.getElementById("login-button")
 const nameInput = document.getElementById("name-input")
 const passwordInput = document.getElementById("password-input");

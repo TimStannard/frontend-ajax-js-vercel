@@ -5,6 +5,7 @@ const go = document.getElementById("coffee-button");
 const priceInput = document.getElementById("price-input");
 const nameInput = document.getElementById("name-input");
 const imageURLInput = document.getElementById("image-url-input");
+const baseUrl = "https://mongo-coffee-app.vercel.app";
 
 // setting up our coffee data
 // const latte = {
@@ -17,7 +18,7 @@ const imageURLInput = document.getElementById("image-url-input");
 let showAllCoffee = () => {
   $.ajax({
     type: "GET",
-    url: "http://localhost:3100/allCoffee",
+    url: `${baseUrl}/allCoffee`,
     // your success function contains a object which can be named anything
     success: (coffees) => {
       console.log(coffees);
@@ -32,7 +33,7 @@ let showAllCoffee = () => {
 go.onclick = () => {
   console.log("clicked");
   $.ajax({
-    url: `http://localhost:3100/addCoffee`,
+    url: `${baseUrl}/addCoffee`,
     // use the post type to create data somewhere
     // requesting to POST our data
     type: "POST",
@@ -58,7 +59,7 @@ let deleteCoffee = (coffeeId) => {
   // use ajax and go to the delete route
   $.ajax({
     // Let's go to our route
-    url: `http://localhost:3100/deleteCoffee/${coffeeId}`,
+    url: `${baseUrl}/deleteCoffee/${coffeeId}`,
     type: "DELETE",
     success: () => {
       // at this point, we can assume that the delete was successful
@@ -94,7 +95,7 @@ handleEditFunctionality = (coffee, id) => {
     let imageurl = document.getElementById("imageUrl").value;
     console.log(productId, productName, productPrice, imageurl);
     $.ajax({
-      url: `http://localhost:3100/updateProduct/${productId}`,
+      url: `${baseUrl}/updateProduct/${productId}`,
       type: "PATCH",
       data: {
         name: productName,
@@ -118,7 +119,7 @@ handleEditFunctionality = (coffee, id) => {
 populateEditModal = (coffeeId) => {
   console.log(coffeeId);
   $.ajax({
-    url: `http://localhost:3100/coffee/${coffeeId}`,
+    url: `${baseUrl}/coffee/${coffeeId}`,
     type: "GET",
     success: (coffeeData) => {
       // console.log("coffee was found!")
